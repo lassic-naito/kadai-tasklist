@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Task;
 
-use App\User;
-
 class TasksController extends Controller
 {
     /**
