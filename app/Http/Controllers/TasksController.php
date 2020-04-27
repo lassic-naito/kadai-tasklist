@@ -24,8 +24,6 @@ class TasksController extends Controller
                 'user' => $user,
                 'tasks' => $tasks,
             ];
-        }else{
-            return redirect('/');
         }
         return view('welcome', $data);
     }
