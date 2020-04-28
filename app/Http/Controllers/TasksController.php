@@ -54,15 +54,16 @@ class TasksController extends Controller
             'status' => 'required|max:10',
         ]);
         
-        // $task = new Task;
-        // $task->content = $request->content;
-        // $task->status = $request->status;
-        // $task->save();
+        $task = new Task;
+        $task->content = $request->content;
+        $task->status = $request->status;
+        $task->user_id = \Auth::id();
+        $task->save();
 
-        $request->user()->tasks()->create([
-            'content' => $request->content,   
-            'status' => $request->status,
-        ]);
+        // $request->user()->tasks()->create([
+        //     'content' => $request->content,   
+        //     'status' => $request->status,
+        // ]);
 
         return redirect('/');
         // return back();
@@ -123,7 +124,13 @@ class TasksController extends Controller
         $task = Task::find($id);
         $task->content = $request->content;
         $task->status = $request->status;
+        $task->user_id = \Auth::id();
         $task->save();
+        
+        // $request->user()->tasks()->create([
+        //     'content' => $request->content,   
+        //     'status' => $request->status,
+        // ]);
         
         return redirect('/');
     }
